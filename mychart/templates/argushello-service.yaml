@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  namespace:  {{ .Values.namespace }}
+  labels:
+    run: argushello-service
+spec:
+  selector:
+    app: argushello
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetport }}
+  type: {{ .Values.service.type }}
